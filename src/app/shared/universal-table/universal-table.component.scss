@@ -6,10 +6,12 @@ table {
     th, td {
       @include table-cell;
       padding: spacing(sm) spacing(md);
+      white-space: nowrap;
     }
 
     th {
         @include table-header;
+        white-space: nowrap;
     }
 
     .header-text {
@@ -28,10 +30,12 @@ table {
   
     .client-cell .primary {
       font-weight: font-weight(light);
+      white-space: nowrap;
     }
   
     .client-cell .secondary {
       @include text-small;
+      white-space: nowrap;
     }
   
     .status {
