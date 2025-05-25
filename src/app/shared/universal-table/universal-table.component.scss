@@ -1,0 +1,175 @@
+table {
+    background: inherit;
+    color: #e5e7eb;
+  
+
+    th, td {
+      color: #ffff;
+      padding: 16px;
+      border-bottom: 1px solid #2c3243;
+      font-weight: 300;
+      padding: 0 16px;
+    }
+
+    th {
+        align-content: center;
+        height: 30px !important;
+        font-size: 0.8em;
+        font-weight: 500;
+        color: #788599;
+        padding: 0;
+    }
+
+    .header-text {
+        margin-left: 15px;
+    }
+
+    .table-header-row {
+        background-color: #252A3D;
+        height: 30px;
+    }
+
+    .custom-table-data-row {
+        padding: 0;
+        height: 50px !important;
+    }
+  
+    .client-cell .primary {
+      font-weight: 300;
+    }
+  
+    .client-cell .secondary {
+      font-size: 0.875rem;
+      color: #9ca3af;
+    }
+  
+    .status {
+        display: flex;
+        align-items: center;
+        font-weight: 300;
+        color: white;
+        gap: 8px;
+      
+        .dot {
+          width: 8px;
+          height: 8px;
+          border-radius: 50%;
+        }
+      
+        &.new .dot { background-color: #3b82f6; } 
+        &.active .dot { background-color: #3BB979; }
+        &.pending .dot { background-color: #FDD261; }
+        &.underReview .dot { background-color: #3b82f6; }
+        &.completed .dot { background-color: #3BB979; }
+        &.referral .dot { background-color: #cecece; }
+      }
+  }
+
+  .premium {
+    color: #3b82f6; /* Tailwind yellow-400 */
+    font-weight: 500;
+  }
+
+  .loss-ratio {
+    display: inline-block;
+    border-radius: 9999px;
+    font-weight: 500;
+    font-size: 0.875rem;
+    text-align: center;
+    min-width: 48px;
+    color: black;
+  
+    &.low {
+      background-color: #3BB979; // green-500
+    }
+  
+    &.medium {
+      background-color: #FDD261; // yellow-400
+    }
+  
+    &.high {
+      background-color: #B93B3B; // red-500
+      color: white;
+    }
+  }
+
+  .appetite {
+    display: inline-block;
+    border-radius: 9999px;
+    font-weight: 500;
+    font-size: 0.875rem;
+    text-align: center;
+    min-width: 86px;
+    color: #ffff;
+    font-size: 0.8rem;
+    background-color: #222F5C;
+  }
+
+  .triage {
+    display: inline-block;
+    border-radius: 9999px;
+    font-weight: 500;
+    font-size: 0.875rem;
+    text-align: center;
+    min-width: 40px;
+    color: #3B82F6;
+    font-size: 0.8rem;
+    padding: 1px 0px;
+    background-color: inherit;
+    border: 1px solid #3B82F6;
+  }
+
+  .winnability-badge {
+    display: inline-flex;
+    align-items: center;
+    border: 1px solid #3b82f6; // blue-500
+    border-radius: 9999px;
+    padding: 1px 8px;
+    font-size: 0.875rem;
+    color: #3b82f6;
+    font-weight: 500;
+    gap: 8px;
+  
+    .dots {
+      display: flex;
+      gap: 4px;
+  
+      .dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background-color: #3b82f6;
+      }
+    }
+  
+    .label {
+      white-space: nowrap;
+    }
+  }
+  
+  
+
+  :host ::ng-deep {
+    .mat-mdc-table {
+      width: 100%;
+    }
+  
+    .mat-mdc-row:nth-child(even) {
+      background-color: #232838;
+    }
+  }
+
+  :host ::ng-deep .icon {
+    transform: rotate(90deg);
+    &:hover {
+      cursor: pointer;
+      color: #3b82f6; /* Tailwind blue-500 */
+    }
+  }
+
+  :host ::ng-deep .user-cell {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+  }

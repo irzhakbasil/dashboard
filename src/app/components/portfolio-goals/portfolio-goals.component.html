@@ -1,0 +1,54 @@
+<div class="performance-targets">
+    <app-section-header [sectionName]="'Performance goals'"></app-section-header>
+    <!-- PORTFOLIO LOSS RATIO TARGET -->
+    <div class="section">
+      <h4>PORTFOLIO LOSS RATIO TARGET</h4>
+      <p class="tg">TG: {{ portfolioLossTarget }}%</p>
+      <div class="loss-bar-wrapper">
+        <div class="loss-bar">
+            <div class="green" [style.width.%]="greenWidth"></div>
+            <div class="yellow" [style.width.%]="yellowWidth"></div>
+            <div class="red" [style.width.%]="redWidth"></div>
+            
+          <div class="value-label">{{ portfolioLossRatio }}%</div>
+          <div class="arrow-down"></div>
+        </div>
+        <p class="status good">{{ portfolioLossOffset | number: '1.1-1' }}% (GOOD)</p>
+      </div>
+    </div>
+  
+    <!-- RENEWAL RETENTION -->
+    <div class="section">
+      <h4>RENEWAL RETENTION</h4>
+      <p class="tg">TG: {{ renewalTargetRange[0] }}-{{ renewalTargetRange[1] }}%</p>
+      <div class="retention-bar">
+        <div class="red-start"></div>
+        <div class="yellow-fill"></div>
+        <div class="retention-value">{{ renewalRetention }}%</div>
+      </div>
+      <p class="status on-target">ON TARGET</p>
+    </div>
+  
+    <!-- NEW BUSINESS TARGET -->
+    <div class="section">
+      <h4>NEW BUSINESS TARGET</h4>
+      <div class="progress-bar">
+        <div class="fill" [style.width.%]="newBusinessPercent"></div>
+        <div class="label left">${{ newBusiness }}M</div>
+        <div class="label right">${{ newBusinessTarget }}M</div>
+      </div>
+      <p class="status">{{ newBusinessPercent }}%</p>
+    </div>
+  
+    <!-- ANNUAL GWP TARGET -->
+    <div class="section">
+      <h4>ANNUAL GWP TARGET</h4>
+      <div class="progress-bar">
+        <div class="fill" [style.width.%]="annualGWPPercent"></div>
+        <div class="label left">${{ annualGWP }}M</div>
+        <div class="label right">${{ annualGWPTarget }}M</div>
+      </div>
+      <p class="status">{{ annualGWPPercent }}%</p>
+    </div>
+  </div>
+  

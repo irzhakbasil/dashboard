@@ -1,0 +1,27 @@
+.tab-buttons {
+    display: flex;
+    gap: 8px;
+    background-color: inherit; // темний фон
+    padding: 15px 0;
+  }
+  
+  .tab {
+    background-color: #0C0F17; // темна кнопка по дефолту
+    color: #e5e7eb; // світлий текст
+    border: none;
+    padding: 6px 16px;
+    border-radius: 9999px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+  
+    &.active {
+      background-color: #3b82f6; // синій
+      color: white;
+    }
+  
+    &:hover:not(.active) {
+      background-color: #334155;
+    }
+  }

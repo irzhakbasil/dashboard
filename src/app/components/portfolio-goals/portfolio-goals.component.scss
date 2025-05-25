@@ -1,0 +1,156 @@
+/* performance-targets.component.scss */
+:host {
+    display: block;
+    background-color: inherit;
+    color: #e5e7eb;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 360px;
+  }
+  
+  .section {
+    margin-bottom: 32px;
+  
+    h4 {
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+      color: #cbd5e1;
+    }
+  
+    .tg {
+      font-size: 10px;
+      color: #94a3b8;
+      margin-bottom: 6px;
+    }
+  
+    .status {
+      font-size: 10px;
+      font-weight: 600;
+      margin-top: 4px;
+  
+      &.good {
+        color: #10b981;
+      }
+  
+      &.on-target {
+        color: #22c55e;
+      }
+    }
+  }
+  
+  /* === Portfolio Loss Bar === */
+  .loss-bar-wrapper {
+    position: relative;
+  }
+  
+  .loss-bar {
+    display: flex;
+    height: 24px;
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+  
+    .green {
+      background-color: #34d399;
+    }
+  
+    .yellow {
+      background-color: #fbbf24;
+    }
+  
+    .red {
+      background-color: #ef4444;
+      flex-grow: 1;
+    }
+  
+    .value-label {
+      position: absolute;
+      left: 50%;
+      top: 0;
+      transform: translateX(-50%);
+      font-size: 11px;
+      font-weight: 600;
+      color: #fff;
+      line-height: 24px;
+      z-index: 2;
+    }
+  
+    .arrow-down {
+      position: absolute;
+      left: 50%;
+      top: 26px;
+      transform: translateX(-50%);
+      width: 0;
+      height: 0;
+      border-left: 6px solid transparent;
+      border-right: 6px solid transparent;
+      border-top: 6px solid #60a5fa;
+    }
+  }
+  
+  /* === Retention Bar === */
+  .retention-bar {
+    position: relative;
+    height: 24px;
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    margin-top: 4px;
+  
+    .red-start {
+      background-color: #dc2626;
+      width: 15%;
+    }
+  
+    .yellow-fill {
+      background-color: #facc15;
+      flex-grow: 1;
+    }
+  
+    .retention-value {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      color: white;
+      font-size: 11px;
+      font-weight: bold;
+      line-height: 24px;
+    }
+  }
+  
+  /* === Generic Progress Bars (Blue) === */
+  .progress-bar {
+    position: relative;
+    background-color: #374151;
+    height: 24px;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-top: 6px;
+  
+    .fill {
+      background-color: #3b82f6;
+      height: 100%;
+      border-radius: 12px 0 0 12px;
+    }
+  
+    .label {
+      position: absolute;
+      top: 0;
+      line-height: 24px;
+      font-size: 11px;
+      font-weight: bold;
+      color: white;
+  
+      &.left {
+        left: 8px;
+      }
+  
+      &.right {
+        right: 8px;
+      }
+    }
+  }
+  

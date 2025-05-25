@@ -1,0 +1,8 @@
+<a 
+  [routerLink]="link" routerLinkActive="active-link" 
+  class="nav-link" 
+  [ngClass]="{'nav-link-space': !isFirstElement}"
+  >
+  <lucide-icon [name]="resolvedIcon" [size]="20" class="icon"></lucide-icon>
+  <span>{{ label }}</span>
+</a>

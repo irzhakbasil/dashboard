@@ -1,0 +1,11 @@
+<div class="header-filter-container">
+  <app-section-header [sectionName]="'My Accounts'"></app-section-header>
+  <app-my-accounts-filter (filterChanged)="filterChanged($event)"></app-my-accounts-filter>
+</div>
+<app-universal-table
+  [tableWidth]="'1500'"
+  [data]="filterdTableData"
+  [displayColumns]="displayColumns"
+  [columnHeaders]="customColumnHeaders"
+  >
+</app-universal-table>

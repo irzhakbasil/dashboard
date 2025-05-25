@@ -1,0 +1,12 @@
+<section id="menu">
+    <nav>
+        @for (item of menuItems; track item; let first = $first) {
+            <app-nav-link
+                [isFirstElement]="first"
+                [link]="item.link"
+                [icon]="item.icon"
+                [label]="item.name">
+            </app-nav-link>
+          }
+    </nav>
+</section>

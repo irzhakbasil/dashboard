@@ -1,0 +1,40 @@
+.top-bar {
+    padding-left: 100px;
+    padding-right: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    background-color: inherit;
+    border-bottom: 2px solid #1D2434;
+  
+    .welcome-message {
+      color: #ffffff;
+      font-size: 2.25rem;
+  
+      strong {
+        font-weight: 300;
+      }
+    }
+  
+    .top-bar-actions {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+  
+      .search-input {
+        padding: 0.7rem 1rem;
+        background-color: #1E2233;
+        border: none;
+        border-radius: 999px;
+        color: #ccc;
+        font-size: 0.95rem;
+        width: 260px;
+  
+        &::placeholder {
+          color: #555;
+        }
+      }
+    }
+  }

@@ -1,0 +1,14 @@
+<div class="filter-toolbar">
+    <input 
+        type="text" 
+        class="search-input"
+        placeholder="Search" 
+        [(ngModel)]="searchText" 
+        (ngModelChange)="_updateFilter(MyAccountFiltersEnum.TEXT_SEARCH)" 
+        />
+  
+    <button class="action-button" (click)="_updateFilter(MyAccountFiltersEnum.FILTER)">Filter</button>
+    <button class="action-button" (click)="_updateFilter(MyAccountFiltersEnum.SORT)">Sort</button>
+    <button class="action-button" (click)="_updateFilter(MyAccountFiltersEnum.GROUP)">Group</button>
+    <button class="new-button">+ New</button>
+  </div>

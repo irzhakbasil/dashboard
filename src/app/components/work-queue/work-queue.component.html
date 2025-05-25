@@ -1,0 +1,10 @@
+<app-section-header [sectionName]="'Work Queue'"></app-section-header>
+
+<app-work-queue-filter [data]="originalTableData" (filterChanged)="filterTableData($event)"></app-work-queue-filter>
+
+<app-universal-table
+  [data]="filterdTableData"
+  [displayColumns]="displayColumns"
+  [columnHeaders]="customColumnHeaders"
+  >
+</app-universal-table>

@@ -1,0 +1,35 @@
+.nav-link {
+    background-color: #0C0F17;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    border: 1px solid #1D2434;
+    border-radius: 9999px;
+    color: #d1d5db; // light gray
+    text-decoration: none;
+    transition: background-color 0.2s, color 0.2s;
+  
+    .icon {
+      color: #2F65BE; // blue-500 for inactive
+    }
+  
+    &:hover {
+        cursor: pointer;
+      background-color: rgba(255, 255, 255, 0.05);
+    }
+  
+    &.active-link {
+      background-color: #3b82f6; // Tailwind blue-500
+      color: white;
+      border-color: transparent;
+  
+      .icon {
+        color: white;
+      }
+    }
+  }
+
+  .nav-link-space {
+    margin-left: 8px; // Space between links
+  }

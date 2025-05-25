@@ -1,0 +1,114 @@
+<table mat-table [dataSource]="data" class="mat-elevation-z2" [ngStyle]="{'width': tableWidth + 'px'}">
+    <ng-container *ngFor="let column of displayColumns" [matColumnDef]="column">
+      <th mat-header-cell *matHeaderCellDef>
+       <div class="header-text">
+            {{ columnHeaders[column] || (column | uppercase) }}
+       </div>
+      </th>
+      <td mat-cell *matCellDef="let element">
+        <ng-container
+          *ngIf="getTemplate(column); else defaultTemplate"
+          [ngTemplateOutlet]="getTemplate(column)"
+          [ngTemplateOutletContext]="{ $implicit: element[column], element: element }"
+        ></ng-container>
+      </td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayColumns" class="table-header-row"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayColumns;"></tr>
+  </table>
+  
+  <!-- TEMPLATES -->
+  <ng-template tableColumn="originatorInfo" let-value>
+    <div class="user-cell">
+      <app-avatar [shortName]="value?.initiales"></app-avatar>
+      <div class="name">{{ value?.name }}</div>
+    </div>
+  </ng-template>
+  
+  <ng-template tableColumn="clientLine" let-value>
+    <div class="client-cell">
+      <div class="primary">{{ value.client }}</div>
+      <div class="secondary">{{ value.line }}</div>
+    </div>
+  </ng-template>
+  
+  <ng-template tableColumn="type" let-value>
+    <span class="type">{{ value }}</span>
+  </ng-template>
+  
+  <ng-template tableColumn="status" let-value>
+    <span
+      class="status"
+      [ngClass]="{
+        'new': value === 'New',
+        'active': value === 'Active',
+        'pending': value === 'Pending Review',
+        'underReview': value === 'Under review',
+        'completed': value === 'Completed',
+        'referral': value === 'Referral',
+      }"
+    >
+      <span class="dot"></span>
+      {{ value }}
+    </span>
+  </ng-template>
+  
+  <ng-template tableColumn="created" let-value>
+    <span class="created">{{ value | date: 'MM/dd/yyyy' }}</span>
+  </ng-template>
+
+  <ng-template tableColumn="actions" let-value>
+    <lucide-icon [name]="CircleEllipsis" [size]="20" class="icon"></lucide-icon>
+  </ng-template>
+  
+  <ng-template tableColumn="accountNameType" let-value>
+    <div class="client-cell">
+      <div class="primary">{{ value.accountName }}</div>
+      <div class="secondary">{{ value.accountType }}</div>
+    </div>
+  </ng-template>
+
+  <ng-template tableColumn="line" let-value>
+    <span class="line">{{ value }}</span>
+  </ng-template>
+
+  <ng-template tableColumn="broker" let-value>
+    <span class="broker">{{ value }}</span>
+  </ng-template>
+
+  <ng-template tableColumn="renewalDate" let-value>
+    <span class="renewal-date">{{ value | date: 'MM/dd/yyyy' }}</span>
+  </ng-template>
+
+  <ng-template tableColumn="premium" let-value>
+    <span class="premium">{{ value }}</span>
+  </ng-template>
+
+  <ng-template tableColumn="ratedPremium" let-value>
+    <span class="rated-premium">{{ value }}</span>
+  </ng-template>
+
+  <ng-template tableColumn="lossRatio" let-value>
+    <span class="loss-ratio" [ngClass]="getLossRatioClass(value)">{{ value }}</span>
+  </ng-template>
+
+  <ng-template tableColumn="appetite" let-value>
+    <span class="appetite">{{ value }}</span>
+  </ng-template>
+
+  <ng-template tableColumn="triage" let-value>
+    <span class="triage">{{ value }}</span>
+  </ng-template>
+
+  <ng-template tableColumn="winnability" let-value>
+    <div class="winnability-badge">
+      <div class="dots">
+        <span class="dot" *ngFor="let _ of getDotArray(value)"></span>
+      </div>
+      <span class="label">{{ value }}</span>
+    </div>
+  </ng-template>
+
+
+  <ng-template #defaultTemplate let-value>{{ value }}</ng-template>
