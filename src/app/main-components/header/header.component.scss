@@ -1,40 +1,28 @@
+@import '../../styles/mixins';
+
 .top-bar {
-    padding-left: 100px;
-    padding-right: 100px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-top: 1em;
-    padding-bottom: 1em;
+    @include container-padding;
+    @include flex-between;
+    padding-top: spacing(md);
+    padding-bottom: spacing(md);
     background-color: inherit;
-    border-bottom: 2px solid #1D2434;
+    border-bottom: 2px solid color(bg-dark);
   
     .welcome-message {
-      color: #ffffff;
-      font-size: 2.25rem;
+      @include heading-large;
   
       strong {
-        font-weight: 300;
+        font-weight: font-weight(light);
       }
     }
   
     .top-bar-actions {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
+      @include flex-start;
+      gap: spacing(md);
   
       .search-input {
-        padding: 0.7rem 1rem;
-        background-color: #1E2233;
-        border: none;
-        border-radius: 999px;
-        color: #ccc;
-        font-size: 0.95rem;
-        width: 260px;
-  
-        &::placeholder {
-          color: #555;
-        }
+        @include search-input;
+        padding: 0.7rem spacing(md);
       }
     }
   }

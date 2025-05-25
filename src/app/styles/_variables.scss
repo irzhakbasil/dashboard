@@ -1,0 +1,108 @@
+// Color Variables
+$colors: (
+  // Primary colors
+  primary: #3b82f6,
+  primary-dark: #2563eb,
+  primary-light: #60a5fa,
+  
+  // Background colors
+  bg-primary: #1E2233,
+  bg-secondary: #232838,
+  bg-tertiary: #252A3D,
+  bg-dark: #1D2434,
+  
+  // Text colors
+  text-primary: #ffffff,
+  text-secondary: #e5e7eb,
+  text-muted: #9ca3af,
+  text-light: #788599,
+  text-placeholder: #555555,
+  text-dark: #000000,
+  
+  // Status colors
+  success: #3BB979,
+  warning: #FDD261,
+  error: #B93B3B,
+  info: #3b82f6,
+  
+  // Border colors
+  border-primary: #2c3243,
+  border-secondary: #1D2434,
+  
+  // Neutral colors
+  gray-light: #cecece,
+  blue-dark: #222F5C,
+);
+
+// Spacing Variables
+$spacing: (
+  xs: 0.25rem,    // 4px
+  sm: 0.5rem,     // 8px
+  md: 1rem,       // 16px
+  lg: 1.5rem,     // 24px
+  xl: 2rem,       // 32px
+  xxl: 3rem,      // 48px
+  xxxl: 6.25rem,  // 100px
+);
+
+// Typography Variables
+$font-weights: (
+  light: 300,
+  normal: 400,
+  medium: 500,
+  semibold: 600,
+  bold: 700,
+);
+
+$font-sizes: (
+  xs: 0.75rem,    // 12px
+  sm: 0.8rem,     // 12.8px
+  base: 0.875rem, // 14px
+  md: 0.95rem,    // 15.2px
+  lg: 1rem,       // 16px
+  xl: 1.125rem,   // 18px
+  xxl: 2.25rem,   // 36px
+);
+
+// Border Radius Variables
+$border-radius: (
+  none: 0,
+  sm: 0.25rem,    // 4px
+  md: 0.5rem,     // 8px
+  lg: 0.75rem,    // 12px
+  xl: 1rem,       // 16px
+  full: 9999px,
+);
+
+// Z-index Variables
+$z-index: (
+  dropdown: 1000,
+  modal: 1050,
+  tooltip: 1070,
+  navbar: 1030,
+);
+
+// Helper function to get color
+@function color($name) {
+  @return map-get($colors, $name);
+}
+
+// Helper function to get spacing
+@function spacing($name) {
+  @return map-get($spacing, $name);
+}
+
+// Helper function to get font weight
+@function font-weight($name) {
+  @return map-get($font-weights, $name);
+}
+
+// Helper function to get font size
+@function font-size($name) {
+  @return map-get($font-sizes, $name);
+}
+
+// Helper function to get border radius
+@function border-radius($name) {
+  @return map-get($border-radius, $name);
+}

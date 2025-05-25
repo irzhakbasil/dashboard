@@ -1,0 +1,245 @@
+@import 'variables';
+
+// Layout Mixins
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@mixin flex-start {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+@mixin container-padding {
+  padding-left: spacing(xxxl);
+  padding-right: spacing(xxxl);
+}
+
+@mixin card {
+  background-color: color(bg-primary);
+  border: 1px solid color(border-secondary);
+  border-radius: border-radius(lg);
+  padding: spacing(lg);
+}
+
+// Typography Mixins
+@mixin text-style($size: base, $weight: normal, $color: text-primary) {
+  font-size: font-size($size);
+  font-weight: font-weight($weight);
+  color: color($color);
+}
+
+@mixin heading-large {
+  @include text-style(xxl, light, text-primary);
+}
+
+@mixin heading-medium {
+  @include text-style(xl, medium, text-primary);
+}
+
+@mixin text-small {
+  @include text-style(sm, normal, text-muted);
+}
+
+@mixin text-muted {
+  @include text-style(base, normal, text-muted);
+}
+
+// Button Mixins
+@mixin button-base {
+  border: none;
+  border-radius: border-radius(full);
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  font-weight: font-weight(medium);
+  
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+@mixin button-primary {
+  @include button-base;
+  background-color: color(primary);
+  color: color(text-primary);
+  
+  &:hover {
+    background-color: color(primary-dark);
+  }
+}
+
+@mixin button-outline($border-color: primary, $text-color: primary) {
+  @include button-base;
+  background-color: transparent;
+  border: 1px solid color($border-color);
+  color: color($text-color);
+  
+  &:hover {
+    background-color: color($border-color);
+    color: color(text-primary);
+  }
+}
+
+// Badge Mixins
+@mixin badge-base {
+  display: inline-block;
+  border-radius: border-radius(full);
+  font-weight: font-weight(medium);
+  font-size: font-size(base);
+  text-align: center;
+  padding: spacing(xs) spacing(sm);
+}
+
+@mixin status-badge {
+  @include badge-base;
+  @include flex-start;
+  gap: spacing(sm);
+  font-weight: font-weight(light);
+  color: color(text-primary);
+}
+
+@mixin status-dot($color) {
+  width: 8px;
+  height: 8px;
+  border-radius: border-radius(full);
+  background-color: color($color);
+}
+
+@mixin badge-colored($bg-color, $text-color: text-dark) {
+  @include badge-base;
+  background-color: color($bg-color);
+  color: color($text-color);
+}
+
+@mixin badge-outline($border-color, $text-color) {
+  @include badge-base;
+  background-color: transparent;
+  border: 1px solid color($border-color);
+  color: color($text-color);
+}
+
+// Table Mixins
+@mixin table-base {
+  background: inherit;
+  color: color(text-secondary);
+  width: 100%;
+}
+
+@mixin table-cell {
+  color: color(text-primary);
+  padding: spacing(md);
+  border-bottom: 1px solid color(border-primary);
+  font-weight: font-weight(light);
+}
+
+@mixin table-header {
+  @include table-cell;
+  align-content: center;
+  height: 30px;
+  font-size: font-size(sm);
+  font-weight: font-weight(medium);
+  color: color(text-light);
+  padding: 0;
+}
+
+@mixin table-row {
+  &:nth-child(even) {
+    background-color: color(bg-secondary);
+  }
+}
+
+// Input Mixins
+@mixin input-base {
+  padding: spacing(sm) spacing(md);
+  background-color: color(bg-primary);
+  border: none;
+  border-radius: border-radius(full);
+  color: color(text-secondary);
+  font-size: font-size(md);
+  
+  &::placeholder {
+    color: color(text-placeholder);
+  }
+  
+  &:focus {
+    outline: none;
+    border: 1px solid color(primary);
+  }
+}
+
+@mixin search-input {
+  @include input-base;
+  width: 260px;
+}
+
+// Utility Mixins
+@mixin hover-primary {
+  cursor: pointer;
+  transition: color 0.2s ease-in-out;
+  
+  &:hover {
+    color: color(primary);
+  }
+}
+
+@mixin truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@mixin visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+// Animation Mixins
+@mixin transition($property: all, $duration: 0.2s, $timing: ease-in-out) {
+  transition: $property $duration $timing;
+}
+
+@mixin fade-in {
+  opacity: 0;
+  animation: fadeIn 0.3s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+// Responsive Mixins
+@mixin mobile {
+  @media (max-width: 768px) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: 769px) and (max-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: 1025px) {
+    @content;
+  }
+}

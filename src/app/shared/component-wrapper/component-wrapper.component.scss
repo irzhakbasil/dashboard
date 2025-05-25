@@ -1,8 +1,7 @@
+@import '../../styles/mixins';
+
 .component-wrapper {
-    margin-top: 15px;
-    background-color: #1E2233;
-    border: 1px solid #1D2434;
+    margin-top: spacing(md);
+    @include card;
     width: fit-content;
-    border-radius: 12px;
-    padding: 1.5rem;
 }

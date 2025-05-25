@@ -1,31 +1,23 @@
-table {
-    background: inherit;
-    color: #e5e7eb;
-  
+@import '../../styles/mixins';
 
+table {
+    @include table-base;
+  
     th, td {
-      color: #ffff;
-      padding: 16px;
-      border-bottom: 1px solid #2c3243;
-      font-weight: 300;
-      padding: 8.4px 16px;
+      @include table-cell;
+      padding: spacing(sm) spacing(md);
     }
 
     th {
-        align-content: center;
-        height: 30px !important;
-        font-size: 0.8em;
-        font-weight: 500;
-        color: #788599;
-        padding: 0;
+        @include table-header;
     }
 
     .header-text {
-        margin-left: 15px;
+        margin-left: spacing(md);
     }
 
     .table-header-row {
-        background-color: #252A3D;
+        background-color: color(bg-tertiary);
         height: 30px;
     }
 
@@ -35,110 +27,76 @@ table {
     }
   
     .client-cell .primary {
-      font-weight: 300;
+      font-weight: font-weight(light);
     }
   
     .client-cell .secondary {
-      font-size: 0.875rem;
-      color: #9ca3af;
+      @include text-small;
     }
   
     .status {
-        display: flex;
-        align-items: center;
-        font-weight: 300;
-        color: white;
-        gap: 8px;
+        @include status-badge;
       
         .dot {
-          width: 8px;
-          height: 8px;
-          border-radius: 50%;
+          @include status-dot(primary);
         }
       
-        &.new .dot { background-color: #3b82f6; } 
-        &.active .dot { background-color: #3BB979; }
-        &.pending .dot { background-color: #FDD261; }
-        &.underReview .dot { background-color: #3b82f6; }
-        &.completed .dot { background-color: #3BB979; }
-        &.referral .dot { background-color: #cecece; }
+        &.new .dot { background-color: color(primary); } 
+        &.active .dot { background-color: color(success); }
+        &.pending .dot { background-color: color(warning); }
+        &.underReview .dot { background-color: color(primary); }
+        &.completed .dot { background-color: color(success); }
+        &.referral .dot { background-color: color(gray-light); }
       }
   }
 
   .premium {
-    color: #3b82f6; /* Tailwind yellow-400 */
-    font-weight: 500;
+    @include text-style(base, medium, primary);
   }
 
   .loss-ratio {
-    display: inline-block;
-    border-radius: 9999px;
-    font-weight: 500;
-    font-size: 0.875rem;
-    text-align: center;
+    @include badge-base;
     min-width: 48px;
-    color: black;
+    color: color(text-dark);
   
     &.low {
-      background-color: #3BB979; // green-500
+      @include badge-colored(success);
     }
   
     &.medium {
-      background-color: #FDD261; // yellow-400
+      @include badge-colored(warning);
     }
   
     &.high {
-      background-color: #B93B3B; // red-500
-      color: white;
+      @include badge-colored(error, text-primary);
     }
   }
 
   .appetite {
-    display: inline-block;
-    border-radius: 9999px;
-    font-weight: 500;
-    font-size: 0.875rem;
-    text-align: center;
+    @include badge-colored(blue-dark, text-primary);
     min-width: 86px;
-    color: #ffff;
-    font-size: 0.8rem;
-    background-color: #222F5C;
+    font-size: font-size(sm);
   }
 
   .triage {
-    display: inline-block;
-    border-radius: 9999px;
-    font-weight: 500;
-    font-size: 0.875rem;
-    text-align: center;
+    @include badge-outline(primary, primary);
     min-width: 40px;
-    color: #3B82F6;
-    font-size: 0.8rem;
+    font-size: font-size(sm);
     padding: 1px 0px;
-    background-color: inherit;
-    border: 1px solid #3B82F6;
   }
 
   .winnability-badge {
-    display: inline-flex;
-    align-items: center;
-    border: 1px solid #3b82f6; // blue-500
-    border-radius: 9999px;
-    padding: 1px 8px;
-    font-size: 0.875rem;
-    color: #3b82f6;
-    font-weight: 500;
-    gap: 8px;
+    @include badge-outline(primary, primary);
+    @include flex-start;
+    gap: spacing(sm);
+    padding: 1px spacing(sm);
   
     .dots {
-      display: flex;
-      gap: 4px;
+      @include flex-start;
+      gap: spacing(xs);
   
       .dot {
-        width: 8px;
-        height: 8px;
-        border-radius: 50%;
-        background-color: #3b82f6;
+        @include status-dot(primary);
       }
     }
   
@@ -154,22 +112,17 @@ table {
       width: 100%;
     }
   
-    .mat-mdc-row:nth-child(even) {
-      background-color: #232838;
+    .mat-mdc-row {
+      @include table-row;
     }
   }
 
   :host ::ng-deep .icon {
     transform: rotate(90deg);
-    &:hover {
-      cursor: pointer;
-      color: #3b82f6; /* Tailwind blue-500 */
-    }
+    @include hover-primary;
   }
 
   :host ::ng-deep .user-cell {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 8px;
+    @include flex-start;
+    gap: spacing(sm);
   }

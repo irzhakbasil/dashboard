@@ -1,0 +1,6 @@
+@import 'mixins';
+
+@mixin section-header {
+  @include heading-medium;
+  margin-bottom: spacing(md);
+}
