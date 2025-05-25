@@ -1,0 +1,106 @@
+workflow:
+  rules:
+    # This to run pipelines only on merge requests and on the default branch
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+
+stages:
+  - build
+  - test
+  - deploy_review
+  - deploy_staging
+  - deploy_prod
+
+variables:
+  NETLIFY_SITE_ID: '511bacb6-a54a-458c-8e7a-0299b16d147a'
+
+build_website:
+  image: node:22-alpine
+  stage: build
+  script:
+    - npm ci
+    - npm run build
+  artifacts:
+    paths:
+      - dist/dashboard/
+
+test_artifact:
+  image: alpine
+  stage: test
+  script:
+    - cd dist/dashboard
+    - test -f index.html
+
+test_unit:
+  image: node:22-alpine
+  stage: test
+  script:
+    - npm ci
+    - npm run test -- --watch=false --browsers=ChromeHeadless
+  artifacts:
+    reports:
+      junit: reports/junit.xml
+
+netlify_deploy_review: 
+  rules:
+    - if: $CI_COMMIT_BRANCH != $CI_DEFAULT_BRANCH
+  # adding environment
+  environment:
+    name: preview/$CI_COMMIT_REF_SLUG
+    # in order to use or have this variable we creating it below (echo "REWIEW_URL=$REWIEW_URL" > deploy.env)
+    # this is the URL that will be used to access the review app
+    # artifacts: reports: dotenv: deploy.env - need to be added
+    url: $REVIEW_URL
+  image: node:22-alpine
+  stage: deploy_review
+  before_script:
+    - npm install netlify-cli -g
+    - apk add curl jq
+  script:
+    - netlify --version
+    # --json returns a JSON object with the deploy URL
+    # and other information, which can be useful for debugging
+    # we use tee to save the output to a file and print it to the console
+    - netlify deploy --dir dist/dashboard --alias $CI_COMMIT_REF_SLUG --json | tee deploy-result.json
+    # before tee comand: - cat deploy-result.json
+    # Extract the deploy URL from the JSON response and assign it to a variable
+    - REVIEW_URL=$(jq -r '.deploy_url' deploy-result.json)
+    - echo $REVIEW_URL
+    - curl $REVIEW_URL | grep 'GitLab'
+    - echo "REVIEW_URL=$REVIEW_URL" > deploy.env
+    - cat deploy.env
+  artifacts: 
+    reports:
+      dotenv: deploy.env
+
+netlify_staging: 
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+  image: node:22-alpine
+  stage: deploy_staging
+  # adding environment
+  environment:
+    name: staging
+    url: 'https://staging--irzhak-gitlab-cicd.netlify.app'
+  before_script:
+    - npm install netlify-cli -g
+    - apk add curl
+  script:
+    - netlify --version
+    - netlify deploy --alias staging --dir dist/dashboard
+
+netlify_prod: 
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+  image: node:22-alpine
+  stage: deploy_prod
+  # adding environment
+  environment:
+    name: production
+    url: 'https://irzhak-gitlab-cicd.netlify.app'
+  before_script:
+    - npm install netlify-cli -g
+    - apk add curl
+  script:
+    - netlify --version
+    - netlify deploy --prod --dir dist/dashboard
