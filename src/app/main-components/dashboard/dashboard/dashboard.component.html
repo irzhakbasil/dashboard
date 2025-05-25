@@ -10,11 +10,18 @@
                 <app-portfolio-goals></app-portfolio-goals>
             </app-component-wrapper>
         </section>
-        <section id="quick_actions">
-            <app-component-wrapper>
-                <app-portfolio-goals></app-portfolio-goals>
-            </app-component-wrapper>
-        </section>
+        <div class="vertical-section">
+            <section id="quick_actions">
+                <app-component-wrapper [marginBottom]="'0'">
+                    <app-quick-actions></app-quick-actions>
+                </app-component-wrapper>
+            </section>
+            <section id="market_intelligence">
+                <app-component-wrapper>
+                    <app-market-intelligence></app-market-intelligence>
+                </app-component-wrapper>
+            </section>
+        </div>
     </div>
 
     <section id="my_account">

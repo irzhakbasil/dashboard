@@ -1,0 +1,37 @@
+.market-news {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    font-size: 13px;
+    color: #e5e7eb;
+  
+    .news-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+  
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+  
+      &.red {
+        background-color: #dc2626;
+      }
+  
+      &.yellow {
+        background-color: #facc15;
+      }
+  
+      &.blue {
+        background-color: #3b82f6;
+      }
+    }
+  
+    .divider {
+      border-bottom: 1px solid #2d2f3a;
+      margin-left: 20px;
+    }
+  }
+  

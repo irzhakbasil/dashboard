@@ -3,6 +3,8 @@ import { ComponentWrapperComponent } from '../../../shared/component-wrapper/com
 import { WorkQueueComponent } from '../../../components/work-queue/work-queue.component';
 import { MyAccountsComponent } from '../../../components/my-accounts/my-accounts.component';
 import { PortfolioGoalsComponent } from '../../../components/portfolio-goals/portfolio-goals.component';
+import { QuickActionsComponent } from '../../../components/quick-actions/quick-actions.component';
+import { MarketIntelligenceComponent } from '../../../components/market-intelligence/market-intelligence.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -11,6 +13,8 @@ import { PortfolioGoalsComponent } from '../../../components/portfolio-goals/por
     WorkQueueComponent,
     MyAccountsComponent,
     PortfolioGoalsComponent,
+    QuickActionsComponent,
+    MarketIntelligenceComponent,
   ],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss',

@@ -4,8 +4,8 @@
         (click)="_selectFilter(WorkQueueFiltersEnum.ASSIGNED_TO_ME)">Assigned to me ({{filerItemsCountData[WorkQueueFiltersEnum.ASSIGNED_TO_ME]}})</button>
     <button class="tab" 
         [ngClass]="{'active': selectedFilter === WorkQueueFiltersEnum.PENDING}" 
-        (click)="_selectFilter(WorkQueueFiltersEnum.PENDING)">Pending Review {{filerItemsCountData[WorkQueueFiltersEnum.PENDING]}}</button>
+        (click)="_selectFilter(WorkQueueFiltersEnum.PENDING)">Pending Review ({{filerItemsCountData[WorkQueueFiltersEnum.PENDING]}})</button>
     <button class="tab" 
         [ngClass]="{'active': selectedFilter === WorkQueueFiltersEnum.REFERRAL}" 
-        (click)="_selectFilter(WorkQueueFiltersEnum.REFERRAL)">Referrals {{filerItemsCountData[WorkQueueFiltersEnum.REFERRAL]}}</button>
+        (click)="_selectFilter(WorkQueueFiltersEnum.REFERRAL)">Referrals ({{filerItemsCountData[WorkQueueFiltersEnum.REFERRAL]}})</button>
 </div>
